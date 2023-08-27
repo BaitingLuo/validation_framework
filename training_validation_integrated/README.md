@@ -27,5 +27,6 @@ the containerized computing elements.
 ## Execution
 To run the workflow, you need to give the following command:
 ```
-cwltool --no-match-user --no-read-only --tmpdir $PWD --preserve-environment LEAP_CLI_DIR training_validation_integrated.cwl.json --fetch_raw_input ... --Parameter_config ... 
+cwltool --no-match-user --no-read-only --tmpdir $PWD --preserve-environment LEAP_CLI_DIR training_validation_integrated.cwl.json --fetch_raw_input data.csv --Parameter_config model_config.yaml
+ 
 ```
