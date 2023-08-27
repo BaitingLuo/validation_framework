@@ -1,0 +1,53 @@
+{
+  "cwlVersion": "v1.1",
+  "class": "Workflow",
+  "inputs": {
+    "X_train": "File",
+    "y_train": "File",
+    "X_test": "File",
+    "y_test": "File",
+    "Model_script": "File",
+    "Parameter_config": "File"
+  },
+  "outputs": {
+    "SHapley_ouput": {
+      "type": "File",
+      "outputSource": "validation_script/shapley_result"
+    },
+    "bootstrapping_output": {
+      "type": "File",
+      "outputSource": "validation_script/bootstrapping_result"
+    },
+    "ROC_plot": {
+      "type": "File",
+      "outputSource": "validation_script/ROC_result"
+    },
+    "LIME_interpretation": {
+      "type": "File",
+      "outputSource": "validation_script/LIME_interpretation"
+    }
+  },
+  "steps": {
+    "validation_script": {
+      "run": "00515d72-8017-ef11-734f-26b3e3970045_step.cwl.json",
+      "in": {
+        "model": "Model_script",
+        "X_train": "X_train",
+        "y_test": "y_test",
+        "parameters": "Parameter_config",
+        "y_train": "y_train",
+        "X_test": "X_test"
+      },
+      "out": [
+        "shapley_result",
+        "bootstrapping_result",
+        "ROC_result",
+        "LIME_interpretation"
+      ]
+    }
+  },
+  "requirements": {
+    "InlineJavascriptRequirement": {},
+    "SubworkflowFeatureRequirement": {}
+  }
+}
