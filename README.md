@@ -1,3 +1,3 @@
 # validation_framework
 
-![alt text](http://validation_pipeline.png)
+![alt text](validation_pipeline.png)
