@@ -31,5 +31,10 @@ the containerized computing elements.
 ## Execution
 To run the workflow, you need to give the following command:
 ```
-cwltool --no-match-user --no-read-only --tmpdir $PWD --preserve-environment LEAP_CLI_DIR verification.cwl.json --Parameter_config ... --X_train ... --y_test ... --y_train ... --X_test ... --Model_script ... 
+cwltool --no-match-user --no-read-only --tmpdir $PWD --preserve-environment LEAP_CLI_DIR validation_pipeline.cwl.json --X_train X_train.csv --y_train y_train.csv --X_test X_test.csv --y_test y_test.csv --Model_script model_script.py --Parameter_config model_config.yaml 
 ```
+Or
+```
+cwltool --no-match-user --no-read-only --tmpdir $PWD --preserve-environment LEAP_CLI_DIR validation_pipeline.cwl.json --X_train X_train.csv --y_train y_train.csv --X_test X_test.csv --y_test y_test.csv --Model_script sklearn.pkl --Parameter_config model_config.yaml 
+```
+The parameters in model_config.yaml file needs to be changed accordingly.
