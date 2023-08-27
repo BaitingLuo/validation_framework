@@ -1,0 +1,537 @@
+{
+  "guid": "71aae1a1-b7ef-c145-a895-9ed7a2ff4bf3",
+  "attributes": {
+    "name": "validation_pipeline"
+  },
+  "registry": {
+    "position": {
+      "x": 270,
+      "y": 207
+    }
+  },
+  "steps": {
+    "q": {
+      "guid": "00515d72-8017-ef11-734f-26b3e3970045",
+      "type": {
+        "guid": "e8aa74cf-8e74-f2f4-f4b2-83f70f260674",
+        "name": "DockerPull"
+      },
+      "attributes": {
+        "workdir": "/code",
+        "name": "validation_script",
+        "image": "robert666666/validation",
+        "command": "python verification_script.py"
+      },
+      "registry": {
+        "position": {
+          "x": 591,
+          "y": 354
+        }
+      },
+      "ports": {
+        "0": {
+          "guid": "bc9859ab-9cad-e58d-9f38-8f1ed3f8d296",
+          "type": {
+            "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+            "name": "FileInput"
+          },
+          "attributes": {
+            "asArgument": true,
+            "position": 6,
+            "name": "parameters"
+          },
+          "registry": {
+            "rotation": 0,
+            "position": {
+              "x": 322,
+              "y": 572
+            }
+          }
+        },
+        "1": {
+          "guid": "f1abceb4-673b-f815-ea3d-02c03acfbf8c",
+          "type": {
+            "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+            "name": "FileOutput"
+          },
+          "attributes": {
+            "pattern": "LIME_interpretation.png",
+            "name": "LIME_interpretation"
+          },
+          "registry": {
+            "position": {
+              "x": 662,
+              "y": 471
+            }
+          }
+        },
+        "2": {
+          "guid": "6977add3-1119-f23c-6530-fdfd3972f477",
+          "type": {
+            "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+            "name": "FileOutput"
+          },
+          "attributes": {
+            "pattern": "shaply_summary.png",
+            "name": "shapley_result"
+          },
+          "registry": {
+            "position": {
+              "x": 662,
+              "y": 291
+            }
+          }
+        },
+        "5": {
+          "guid": "fcb761ad-5a3c-2a8f-94fb-3d083179968b",
+          "type": {
+            "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+            "name": "FileInput"
+          },
+          "attributes": {
+            "asArgument": true,
+            "position": 5,
+            "name": "model"
+          },
+          "registry": {
+            "position": {
+              "x": 320,
+              "y": 494
+            }
+          }
+        },
+        "Y": {
+          "guid": "35994ad6-f40d-6eba-fbe0-5d7e04620bee",
+          "type": {
+            "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+            "name": "FileInput"
+          },
+          "attributes": {
+            "position": 1,
+            "asArgument": true,
+            "name": "X_train"
+          },
+          "registry": {
+            "position": {
+              "x": 319,
+              "y": 172
+            }
+          }
+        },
+        "H": {
+          "guid": "7a3d5173-a34c-3880-d1a5-816dddc9867a",
+          "type": {
+            "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+            "name": "FileInput"
+          },
+          "attributes": {
+            "asArgument": true,
+            "position": 2,
+            "name": "y_train"
+          },
+          "registry": {
+            "position": {
+              "x": 320,
+              "y": 246
+            }
+          }
+        },
+        "L": {
+          "guid": "77048228-8b00-2045-d00a-b3e8df7bd7ec",
+          "type": {
+            "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+            "name": "FileInput"
+          },
+          "attributes": {
+            "asArgument": true,
+            "position": 3,
+            "name": "X_test"
+          },
+          "registry": {
+            "position": {
+              "x": 320,
+              "y": 328
+            }
+          }
+        },
+        "M": {
+          "guid": "f93bb276-c5b5-7bdd-1c47-92b003e87094",
+          "type": {
+            "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+            "name": "FileInput"
+          },
+          "attributes": {
+            "asArgument": true,
+            "position": 4,
+            "name": "y_test"
+          },
+          "registry": {
+            "position": {
+              "x": 318,
+              "y": 412
+            }
+          }
+        },
+        "Q": {
+          "guid": "7c4b4c4e-ecf0-ce25-fa08-c48ff386a09b",
+          "type": {
+            "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+            "name": "FileOutput"
+          },
+          "attributes": {
+            "pattern": "bootstrapping.png",
+            "name": "bootstrapping_result"
+          },
+          "registry": {
+            "position": {
+              "x": 662,
+              "y": 351
+            }
+          }
+        },
+        "G": {
+          "guid": "aefc1046-ce6a-4df3-25a2-7ba99e6e9961",
+          "type": {
+            "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+            "name": "FileOutput"
+          },
+          "attributes": {
+            "pattern": "ROC.png",
+            "name": "ROC_result"
+          },
+          "registry": {
+            "position": {
+              "x": 662,
+              "y": 411
+            }
+          }
+        }
+      }
+    }
+  },
+  "subs": {},
+  "ports": {
+    "3": {
+      "guid": "f954851b-3a7b-4e6a-4370-e3fad4574ecb",
+      "type": {
+        "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+        "name": "FileOutput"
+      },
+      "attributes": {
+        "name": "LIME_interpretation"
+      },
+      "registry": {
+        "position": {
+          "x": 861,
+          "y": 479
+        }
+      }
+    },
+    "J": {
+      "guid": "75b47744-baae-5858-aa2d-bfd1e8f2a257",
+      "type": {
+        "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+        "name": "FileInput"
+      },
+      "attributes": {
+        "name": "X_train"
+      },
+      "registry": {
+        "position": {
+          "x": 324,
+          "y": 162
+        }
+      }
+    },
+    "h": {
+      "guid": "d73a8615-1377-c7fc-8e2a-2d8387ccb1c4",
+      "type": {
+        "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+        "name": "FileInput"
+      },
+      "attributes": {
+        "name": "y_train"
+      },
+      "registry": {
+        "position": {
+          "x": 321,
+          "y": 251
+        }
+      }
+    },
+    "G": {
+      "guid": "55731e4f-0789-b438-6d33-789f825477fe",
+      "type": {
+        "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+        "name": "FileInput"
+      },
+      "attributes": {
+        "name": "X_test"
+      },
+      "registry": {
+        "position": {
+          "x": 320,
+          "y": 342
+        }
+      }
+    },
+    "I": {
+      "guid": "1f03e3d4-c76c-8f63-3333-d9e3d737ac61",
+      "type": {
+        "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+        "name": "FileInput"
+      },
+      "attributes": {
+        "name": "y_test"
+      },
+      "registry": {
+        "position": {
+          "x": 320,
+          "y": 431
+        }
+      }
+    },
+    "p": {
+      "guid": "d0fab0b2-5183-362c-88e8-85b0521f4849",
+      "type": {
+        "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+        "name": "FileInput"
+      },
+      "attributes": {
+        "name": "Model_script"
+      },
+      "registry": {
+        "position": {
+          "x": 319,
+          "y": 516
+        }
+      }
+    },
+    "c": {
+      "guid": "ad6c97f6-8beb-c533-e104-8f6dba7989b0",
+      "type": {
+        "guid": "674357d8-0cd8-a278-accd-b4f0c225ffe5",
+        "name": "FileInput"
+      },
+      "attributes": {
+        "name": "Parameter_config"
+      },
+      "registry": {
+        "position": {
+          "x": 322,
+          "y": 610
+        }
+      }
+    },
+    "H": {
+      "guid": "2704ac4f-ec39-8cbd-1f5a-32bb995d2504",
+      "type": {
+        "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+        "name": "FileOutput"
+      },
+      "attributes": {
+        "name": "SHapley_ouput"
+      },
+      "registry": {
+        "position": {
+          "x": 861,
+          "y": 299
+        }
+      }
+    },
+    "A": {
+      "guid": "a15c26fe-c2fc-6229-cfcb-4e781bed888a",
+      "type": {
+        "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+        "name": "FileOutput"
+      },
+      "attributes": {
+        "name": "bootstrapping_output"
+      },
+      "registry": {
+        "position": {
+          "x": 861,
+          "y": 359
+        }
+      }
+    },
+    "e": {
+      "guid": "08affed4-5e15-8895-509a-233fdf71c3cd",
+      "type": {
+        "guid": "2bca78e9-2408-d478-9eb1-d2ecfc2abab8",
+        "name": "FileOutput"
+      },
+      "attributes": {
+        "name": "ROC_plot"
+      },
+      "registry": {
+        "position": {
+          "x": 861,
+          "y": 419
+        }
+      }
+    }
+  },
+  "flows": {
+    "0": {
+      "guid": "90cfafb0-9e1d-3dbb-6f15-0b29281bccfa",
+      "type": {
+        "guid": "27e32b11-8c39-fac6-baad-ae01140827bc",
+        "name": "FlowFi2Fi"
+      },
+      "src": "/p",
+      "dst": "/q/5",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 455,
+          "y": 435
+        }
+      }
+    },
+    "1": {
+      "guid": "6026c55a-0cb9-9620-4345-ee29b9d43225",
+      "type": {
+        "guid": "27e32b11-8c39-fac6-baad-ae01140827bc",
+        "name": "FlowFi2Fi"
+      },
+      "src": "/J",
+      "dst": "/q/Y",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 455,
+          "y": 255
+        }
+      }
+    },
+    "5": {
+      "guid": "4223ca79-49d6-94e2-d759-38b83dae03e9",
+      "type": {
+        "guid": "27e32b11-8c39-fac6-baad-ae01140827bc",
+        "name": "FlowFi2Fi"
+      },
+      "src": "/I",
+      "dst": "/q/M",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 455,
+          "y": 390
+        }
+      }
+    },
+    "W": {
+      "guid": "2e6e5d77-58dd-84d7-f445-afb03d5a7184",
+      "type": {
+        "guid": "27e32b11-8c39-fac6-baad-ae01140827bc",
+        "name": "FlowFi2Fi"
+      },
+      "src": "/c",
+      "dst": "/q/0",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 455,
+          "y": 480
+        }
+      }
+    },
+    "u": {
+      "guid": "b936ec73-e66f-3a95-bcf1-aa89d1ea22c0",
+      "type": {
+        "guid": "f48be115-5970-17d5-79d7-4b326ca2a9a2",
+        "name": "FlowFo2Fo"
+      },
+      "src": "/q/2",
+      "dst": "/H",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 725,
+          "y": 325
+        }
+      }
+    },
+    "r": {
+      "guid": "ca529f84-dbbf-48f7-cccb-6325b999d1f0",
+      "type": {
+        "guid": "f48be115-5970-17d5-79d7-4b326ca2a9a2",
+        "name": "FlowFo2Fo"
+      },
+      "src": "/q/Q",
+      "dst": "/A",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 725,
+          "y": 355
+        }
+      }
+    },
+    "P": {
+      "guid": "fdb620c1-04f0-fd9d-0261-31d6252508c7",
+      "type": {
+        "guid": "f48be115-5970-17d5-79d7-4b326ca2a9a2",
+        "name": "FlowFo2Fo"
+      },
+      "src": "/q/G",
+      "dst": "/e",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 725,
+          "y": 385
+        }
+      }
+    },
+    "Y": {
+      "guid": "f8f7cbe7-bb32-a069-7595-be165e4115fb",
+      "type": {
+        "guid": "f48be115-5970-17d5-79d7-4b326ca2a9a2",
+        "name": "FlowFo2Fo"
+      },
+      "src": "/q/1",
+      "dst": "/3",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 725,
+          "y": 415
+        }
+      }
+    },
+    "s": {
+      "guid": "0f4b36fa-4b5e-9305-fa54-f6d011670e16",
+      "type": {
+        "guid": "27e32b11-8c39-fac6-baad-ae01140827bc",
+        "name": "FlowFi2Fi"
+      },
+      "src": "/h",
+      "dst": "/q/H",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 455,
+          "y": 300
+        }
+      }
+    },
+    "Z": {
+      "guid": "1d33c43f-9df8-7790-7a5d-bedd0bb525f4",
+      "type": {
+        "guid": "27e32b11-8c39-fac6-baad-ae01140827bc",
+        "name": "FlowFi2Fi"
+      },
+      "src": "/G",
+      "dst": "/q/L",
+      "attributes": {},
+      "registry": {
+        "position": {
+          "x": 455,
+          "y": 345
+        }
+      }
+    }
+  }
+}
