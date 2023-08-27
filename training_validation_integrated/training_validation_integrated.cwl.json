@@ -1,0 +1,73 @@
+{
+  "cwlVersion": "v1.1",
+  "class": "Workflow",
+  "inputs": {
+    "fetch_raw_input": "File",
+    "Parameter_config": "File"
+  },
+  "outputs": {
+    "SHapley_ouput": {
+      "type": "File",
+      "outputSource": "validation_script/shapley_result"
+    },
+    "bootstrapping_output": {
+      "type": "File",
+      "outputSource": "validation_script/bootstrapping_result"
+    },
+    "ROC_plot": {
+      "type": "File",
+      "outputSource": "validation_script/ROC_result"
+    },
+    "LIME_interpretation": {
+      "type": "File",
+      "outputSource": "validation_script/LIME_interpretation"
+    }
+  },
+  "steps": {
+    "validation_script": {
+      "run": "55c0c80a-6cbc-3b6e-34fa-6913f8f5b0c6_step.cwl.json",
+      "in": {
+        "y_test": "data_processing/y_test",
+        "model": "train_model/model",
+        "X_train": "data_processing/X_train",
+        "y_train": "data_processing/y_train",
+        "X_test": "data_processing/X_test",
+        "parameters": "Parameter_config"
+      },
+      "out": [
+        "shapley_result",
+        "bootstrapping_result",
+        "ROC_result",
+        "LIME_interpretation"
+      ]
+    },
+    "data_processing": {
+      "run": "642f10c6-0075-038c-2aa0-61d93aad23e9_step.cwl.json",
+      "in": {
+        "raw_data": "fetch_raw_input"
+      },
+      "out": [
+        "y_test",
+        "X_test",
+        "X_train",
+        "y_train"
+      ]
+    },
+    "train_model": {
+      "run": "19c06c63-cc46-e83e-308f-70b77d1fb9f4_step.cwl.json",
+      "in": {
+        "X_test": "data_processing/X_test",
+        "y_test": "data_processing/y_test",
+        "X_train": "data_processing/X_train",
+        "y_train": "data_processing/y_train"
+      },
+      "out": [
+        "model"
+      ]
+    }
+  },
+  "requirements": {
+    "InlineJavascriptRequirement": {},
+    "SubworkflowFeatureRequirement": {}
+  }
+}

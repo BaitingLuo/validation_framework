@@ -1,0 +1,59 @@
+{
+  "cwlVersion": "v1.1",
+  "class": "CommandLineTool",
+  "requirements": {
+    "InlineJavascriptRequirement": {},
+    "DockerRequirement": {
+      "dockerPull": "robert666666/example3"
+    },
+    "ShellCommandRequirement": {},
+    "InitialWorkDirRequirement": {
+      "listing": [
+        {
+          "entry": "$(inputs.raw_data)",
+          "writable": true
+        }
+      ]
+    }
+  },
+  "inputs": {
+    "raw_data": {
+      "type": "File",
+      "inputBinding": {
+        "position": 1
+      }
+    }
+  },
+  "outputs": {
+    "X_test": {
+      "type": "File",
+      "outputBinding": {
+        "glob": "X_test.csv"
+      }
+    },
+    "X_train": {
+      "type": "File",
+      "outputBinding": {
+        "glob": "X_train.csv"
+      }
+    },
+    "y_train": {
+      "type": "File",
+      "outputBinding": {
+        "glob": "y_train.csv"
+      }
+    },
+    "y_test": {
+      "type": "File",
+      "outputBinding": {
+        "glob": "y_test.csv"
+      }
+    }
+  },
+  "arguments": [
+    {
+      "shellQuote": false,
+      "valueFrom": "ln -s /code/* ./\npython clean_data.py"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "cwlVersion": "v1.1",
+  "class": "CommandLineTool",
+  "requirements": {
+    "InlineJavascriptRequirement": {},
+    "DockerRequirement": {
+      "dockerPull": "robert666666/example3"
+    },
+    "ShellCommandRequirement": {},
+    "InitialWorkDirRequirement": {
+      "listing": [
+        {
+          "entry": "$(inputs.X_train)",
+          "writable": true
+        },
+        {
+          "entry": "$(inputs.y_train)",
+          "writable": true
+        },
+        {
+          "entry": "$(inputs.X_test)",
+          "writable": true
+        },
+        {
+          "entry": "$(inputs.y_test)",
+          "writable": true
+        }
+      ]
+    }
+  },
+  "inputs": {
+    "X_train": {
+      "type": "File",
+      "inputBinding": {
+        "position": 1
+      }
+    },
+    "y_train": {
+      "type": "File",
+      "inputBinding": {
+        "position": 2
+      }
+    },
+    "X_test": {
+      "type": "File",
+      "inputBinding": {
+        "position": 3
+      }
+    },
+    "y_test": {
+      "type": "File",
+      "inputBinding": {
+        "position": 4
+      }
+    }
+  },
+  "outputs": {
+    "model": {
+      "type": "File",
+      "outputBinding": {
+        "glob": "sklearn.pkl"
+      }
+    }
+  },
+  "arguments": [
+    {
+      "shellQuote": false,
+      "valueFrom": "ln -s /code/* ./\npython neural_network.py"
+    }
+  ]
+}
