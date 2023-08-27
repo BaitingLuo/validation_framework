@@ -1,0 +1,48 @@
+# input is a python file which contains a class or a saved model. Currently, only sklearn model is supported
+input_model:
+  model_script: True
+  saved_model:
+    sklearn: False
+
+# "classification" or "regression"
+task:
+  classification:
+    enabled: True
+    type:
+      binary: True
+  regression:
+    enabled: False
+# choose shap explainer
+explainer:
+  enabled: True
+  type:
+    KernelExplainer: True
+    PartitionExplainer: False
+    LinearExplainer: False
+    TreeExplainer: False
+
+# enable bootstrapping
+bootstrapping:
+  enabled: True
+  parameters:
+    bootstrap_sample_percentage: 0.9
+    bootstrap_iteration_number: 20  # the number of random sampling with replacement will be performed, a larger number will lead to more time for computation but more robust estimates
+    bootstrapping_metrics:
+      regression:
+        mae: True      #Mean Absolute Error
+        mse: True      #Mean Squared Error
+        rmse: True     #Root Mean Squared Error
+      classification:
+        mcc: True      #Matthews Correlation Coefficient
+        bas: True      #balanced accuracy score
+        ras: True      #roc auc score
+
+
+# enable LIME interpreter
+LIME:
+  enabled: True
+  parameters:
+    LIME_datapoint_index: 5 # the index of instance for LIME interpretation
+    LIME_feature_number: 10 # the number of features to be used in the explanation.
+    LIME_sample_number: 20 # refers to the number of perturbed samples to generate
+
