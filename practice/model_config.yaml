@@ -16,9 +16,13 @@ task:
 explainer:
   enabled: True
   type:
+    #Advantage: model agnostic; Disadvantage: computational cost
     KernelExplainer: True
+    #Advantage: efficient with high dimensional data
     PartitionExplainer: False
+    #Advantage: optimized for linear model, efficient; Disadvantage: model specific
     LinearExplainer: False
+    #Advantage: optimized for tree model, efficient; Disadvantage: model specific
     TreeExplainer: False
 
 # enable bootstrapping
